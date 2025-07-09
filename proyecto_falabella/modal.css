@@ -1,0 +1,29 @@
+.portfolio-thumb {
+    object-fit: cover;
+    height: 150px;
+  }
+  @media (min-width: 768px) {
+    .portfolio-thumb {
+      height: 180px;
+    }
+  }
+
+  .card-gradient {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f2f5 50%, #e3e6ec 100%);
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card-gradient:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.15);
+  }
+
+  .btn-gradient {
+    background: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-primary-bg-subtle, #6ea8ff) 100%);
+    border: none;
+    color: #fff;
+  }
+  .btn-gradient:hover {
+    filter: brightness(1.1);
+    color: #fff;
+  }

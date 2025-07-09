@@ -1,0 +1,239 @@
+/* ==========================
+   RESET & CUSTOM PROPERTIES
+   ========================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, .08);
+  --glass-border: rgba(255, 255, 255, .16);
+  --radius: 1.5rem;
+  --shadow: 0 35px 80px -25px rgba(0, 0, 0, .55);
+
+  /* Gradients */
+  --grad-main: linear-gradient(135deg, #0f0c29 0%, #302b63 35%, #3a65d0 55%, #00eaff 100%);
+  --grad-acc: linear-gradient(90deg, #ffffff, #00eaff, #7e74f1); /* Más claro y contrastante */
+
+  /* Typography */
+  --heading-shadow: 0 3px 12px rgba(0, 0, 0, 0.6);
+
+  /* Spacing */
+  --safe-gap: 1rem;
+}
+#contacto, footer{ margin:calc(-1 * var(--safe-gap)); width:calc(100% + 2*var(--safe-gap)); }
+/* ========== BASE ========= */
+html,body{
+  height:100%;
+  overflow-x:hidden;  /* ← evita scroll lateral  */
+}
+
+body {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  color: #fff;
+  background:
+    radial-gradient(circle at top left, rgba(49, 56, 96, 0.3) 0%, transparent 60%) 0 0 / 50% 50% no-repeat,
+    radial-gradient(circle at bottom right, rgba(10, 58, 71, 0.3) 0%, transparent 60%) 100% 100% / 50% 50% no-repeat,
+    linear-gradient(135deg, #0f0c29 0%, #1d193d 35%, #2b3f7f 55%, #00b8d4 100%);
+  padding: var(--safe-gap);
+  overflow-y: auto;
+}
+
+
+/* ========== CARD ========= */
+.portfolio-card {
+  width: min(95vw, 1100px);
+  background: var(--glass-bg);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform .4s ease;
+}
+.portfolio-card:hover {
+  transform: translateY(-6px) perspective(600px) rotateX(2deg);
+}
+
+/* Project cards tilt */
+.card:hover {
+  transform: perspective(600px) rotateX(2deg) translateY(-4px);
+}
+
+/* ========== IMAGE ========= */
+.hero-photo {
+  width: 100%;
+  max-width: clamp(220px, 42vw, 400px);
+  border-radius: 1rem;
+  transition: transform .3s ease;
+}
+.hero-photo:hover {
+  transform: scale(1.05);
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3 {
+  font-family: 'Poppins', 'Bebas Neue', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  text-shadow: var(--heading-shadow);
+}
+
+h1 {
+  font-size: clamp(3.2rem, 2.4rem + 3.5vw, 6rem);
+  line-height: 1.1;
+  margin-bottom: .7rem;
+  font-weight: 700;
+  animation: glowIn .9s ease both;
+}
+
+h1 small {
+  display: block;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.2rem, .9rem + .8vw, 1.6rem);
+  color: #d9e2ff;
+  letter-spacing: .4px;
+  text-transform: none;
+}
+
+h2 {
+  font-size: clamp(2.2rem, 1.6rem + 2.5vw, 4rem);
+  line-height: 1.15;
+  margin-bottom: .6rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: clamp(1.6rem, 1.2rem + 1.5vw, 3rem);
+  line-height: 1.2;
+  margin-bottom: .5rem;
+  font-weight: 600;
+}
+
+p.lead {
+  font-size: clamp(1.1rem, 1rem + .4vw, 1.4rem);
+  margin-bottom: 1.8rem;
+}
+
+.tech-icon.colored{
+    filter: brightness(1.1) contrast(1.1);
+  }
+
+/* Mejor contraste para texto con gradiente */
+.gradient-text {
+  background: var(--grad-acc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6); /* Añade contraste */
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  font-size: clamp(1.05rem, .95rem + .3vw, 1.2rem);
+  padding: .7rem 1.9rem;
+  letter-spacing: .5px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 22px -6px rgba(0, 0, 0, .35);
+}
+
+/* ==== ANIMATIONS ==== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-fade-in {
+  animation: fadeIn .8s ease both;
+}
+
+@keyframes glowIn {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* ===== TECH ICONS ===== */
+.tech-icon{
+  font-size:3rem;                /* más grandes que fs-1 (~2.5 rem) */
+  padding:.75rem;
+  background:#fff;               /* fondo blanco */
+  border-radius:.75rem;          /* esquinas suavizadas */
+  box-shadow:0 4px 12px rgba(0,0,0,.1);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.tech-icon:hover{
+  transform:translateY(-2px) scale(1.05);
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+/* === Tooltip sobre el icono, sin scroll y texto más grande === */
+.tech-icon {
+  position: relative;
+  font-size: 3rem;        /* tamaño del icono */
+  cursor: pointer;
+}
+
+.tech-icon::after {
+  content: attr(data-name);
+  position: absolute;
+  top: -2.4rem;           /* coloca el texto ENCIMA del icono */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem; /* tamaño del texto del tooltip */
+  padding: .35rem .6rem;
+  white-space: nowrap;
+  border-radius: .4rem;
+  background: rgba(0, 0, 0, .85);
+  color: #fff;
+  opacity: 0;
+  z-index: 10;            /* asegura que quede por encima de todo */
+  pointer-events: none;
+  transition: opacity .2s ease-in-out;
+}
+
+.tech-icon:hover::after,
+.tech-icon:focus::after {
+  opacity: 1;
+}
+
+/* Elimina cualquier herencia de scroll si existía (por seguridad) */
+#iconsCollapse, #iconsCollapse > div {
+  overflow: visible !important;
+}
+
+/* CONTACTO: Fondo claro pero con mejor contraste y legibilidad */
+.contacto-bg {
+  background: linear-gradient(135deg, #e1ecf7 0%, #d3e1f0 100%);
+  color: #111827; /* texto más oscuro */
+  padding-block: 4rem;
+}
+
+/* FOOTER: tono suave con separación clara */
+.footer-bg {
+  background: #dde7f3;
+  color: #111827;
+  padding-block: 2.5rem;
+  
+}
+
+@media (max-width: 576px) {
+  .hero-photo {
+    max-width: 65%;
+  }
+}
